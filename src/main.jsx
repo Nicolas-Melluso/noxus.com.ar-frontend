@@ -11,6 +11,12 @@ ReactDOM.createRoot(root).render(
     <Routes>
       <Route path="/" element={<App/>} />
       <Route path="/finanzas" element={<Finanzas />} />
+      <Route path="*" element={
+        <><script>
+          {console.log("Not found web page")}
+        </script><h1> Not Found </h1>
+        </>
+      } />
     </Routes>
   </BrowserRouter>
 );
