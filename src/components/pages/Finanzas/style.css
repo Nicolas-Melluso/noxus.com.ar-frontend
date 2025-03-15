@@ -1,0 +1,77 @@
+/* finance-page.css */
+* {
+    font-size: 110%;
+}
+
+/* Evita que el gráfico se superponga al contenido */
+.finance-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+    background: #0a0a0a;
+    margin-bottom: 200px; /* Espacio para el gráfico */
+  }
+  
+  .transaction-form {
+    margin-bottom: 20px;
+  }
+  
+  .transaction-list {
+    margin-bottom: 20px;
+  }
+  
+  .transaction {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+  }
+  
+  .transaction.income {
+    color: #4caf50; /* Verde para ingresos */
+  }
+  
+  .transaction.expense {
+    color: #f44336; /* Rojo para gastos */
+  }
+
+/* Posición fija para el gráfico */
+.floating-chart-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    height: 600px;
+    width: 350px; /* Ancho fijo */
+  }
+  
+  .floating-chart {
+    background: rgba(10, 10, 10, 0.8);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Asegura que los gráficos no se desborden */
+  .chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Ajusta el tamaño de los gráficos */
+  .recharts-wrapper {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Evita superposición con el contenido principal */
+  .finance-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+    background: #0a0a0a;
+    margin-bottom: 250px; /* Espacio para el gráfico */
+  }
