@@ -1,19 +1,19 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
-import Sun from "./components/SolarSystem/Sun";
-import Mercurio from "./components/SolarSystem/Mercurio";
-import Venus from "./components/SolarSystem/Venus";
-import Lights from "./components/Camera/Lights";
-import "./style.css";
+import NoxusOrbit from "./Components/NoxusOrbit";
+import Noxu$Planet from "./Components/Noxu$Planet";
+import Voley from "./Components/Voley";
+import Lights from "../Camera/Lights";
+import "./Css/Home.css";
 
-export default function App() {
+export default function Home() {
   return (
     <Canvas camera={{ position: [10, 15, 20], fov: 25 }}>
       <Suspense fallback={<Html>Loading...</Html>}>
-          <Sun />
-          <Mercurio />
-          <Venus />
+          <NoxusOrbit />
+          <Noxu$Planet />
+          <Voley />
           <Lights />
           <OrbitControls enabled={true} />
       </Suspense>

@@ -4,7 +4,7 @@ const TransactionForm = ({ addTransaction }) => {
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
-  const [type, setType] = useState("expense"); // "income" o "expense"
+  const [type, setType] = useState("expense");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +18,6 @@ const TransactionForm = ({ addTransaction }) => {
       date,
     });
 
-    // Resetear formulario
     setAmount("");
     setDescription("");
     setDate("");

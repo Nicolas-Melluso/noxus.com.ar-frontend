@@ -1,26 +1,32 @@
-import tx from "../../textures/3.jpg";
+import tx from "/textures/1.jpg";
 import React, { useState, useRef } from "react";
 import { useLoader, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { Html } from "@react-three/drei";
 import gsap from "gsap";
+import Ecliptic from "../../Camera/Ecliptic";
 import { useNavigate } from "react-router-dom";
-import Ecliptic from "../Camera/Ecliptic";
 
-const Mercurio = () => {
+
+const Noxu$Planet = () => {
+  const texture = useLoader(THREE.TextureLoader, tx);
+
   const [isHovered, setIsHovered] = useState(false);
-  const rotationSpeed = 0.010;
-  const xRadio = 8;
-  const zRadio = 4;
-  const visibleSize = 1;
-  const hitboxSize = 1.8;
-  const speed = 0.47;
+  
+  const { gl, camera } = useThree();
+  
+  const navigate = useNavigate();
+ 
+  const planetRef = useRef();
+  
+  const rotationSpeed = 0.01;
+  const xRadio = 12;
+  const zRadio = 6;
+  const visibleSize = 1.5;
+  const hitboxSize = 2.3;
+  const speed = 0.67;
   const offset = 1;
 
-  const planetRef = useRef();
-  const texture = useLoader(THREE.TextureLoader, tx);
-  const { gl, camera } = useThree(); // Renombra para claridad
-  const navigate = useNavigate();
 
   useFrame(({ clock }) => {
     if (!isHovered) {
@@ -34,27 +40,27 @@ const Mercurio = () => {
   });
 
   const handleClick = () => {
-    setIsHovered(true); // Detiene el movimiento orbital
+    setIsHovered(true);
 
-    // Posición objetivo: Planeta + offset para no colisionar
     const targetPosition = planetRef.current.position.clone();
     const cameraTarget = targetPosition.clone().add(new THREE.Vector3(0, 0, 5));
 
-    // Animación de cámara
     gsap.to(camera.position, {
       x: cameraTarget.x,
       y: cameraTarget.y,
       z: cameraTarget.z,
-      duration: 1, // Duración de acercamiento
-      onUpdate: () => camera.lookAt(targetPosition), // Enfoca el planeta
+      duration: 1,
+      onUpdate: () => camera.lookAt(targetPosition),
       onComplete: () => {
-        // Animación de escala del planeta
         gsap.to(planetRef.current.scale, {
           x: 0,
           y: 0,
           z: 0,
           duration: 0.5,
-          onComplete: () => navigate("/finanzas") // Redirige después de la animación
+          onComplete: () => {
+            const isAuthenticated = !!localStorage.getItem('token'); 
+            isAuthenticated ? navigate("/voley") : navigate("/login")
+          }   
         });
       }
     });
@@ -64,7 +70,6 @@ const Mercurio = () => {
     <>
       <Ecliptic xRadius={xRadio} zRadius={zRadio} position={[0, 0, 0]} />
       <group ref={planetRef}>
-        {/* Hitbox con animación */}
         <mesh
           onClick={handleClick}
           onPointerOver={() => {
@@ -85,12 +90,13 @@ const Mercurio = () => {
           <sphereGeometry args={[visibleSize, 32, 32]} />
           <meshStandardMaterial map={texture} />
           <Html distanceFactor={8}>
-            <div className="annotation">Finanzas</div>
+            <div className="annotation">Voley</div>
           </Html>
         </mesh>
+        {/* Planeta visible */}
       </group>
     </>
   );
 };
 
-export default Mercurio;
+export default Noxu$Planet;
