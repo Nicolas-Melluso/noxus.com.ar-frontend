@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/bg.jpg");
+}
+
+.annotation {
+  transform: translate3d(-50%, -150%, 0);
+  text-align: left;
+  background: #7676aa;
+  color: rgb(7, 6, 20);
+  padding: 16px;
+  border-radius: 5px;
+  font-size: 2rem;
+}
+
+sphereGeometry {
+  cursor: pointer;
+}
