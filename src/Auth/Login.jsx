@@ -21,7 +21,7 @@ const Login = (url) => {
   };
 
   const validationWithBackend = async (user, pass) => {
-    const url = "http://147.93.35.119:3000/transactions/";
+    const url = "http://api.noxus.com.ar:3000/transactions/";
     
     try {
       const response = await fetch(url);

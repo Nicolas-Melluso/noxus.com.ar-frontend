@@ -1,4 +1,4 @@
-import tx from "/textures/1.jpg";
+import tx from "/static/textures/1.jpg";
 import React, { useState, useRef } from "react";
 import { useLoader, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";

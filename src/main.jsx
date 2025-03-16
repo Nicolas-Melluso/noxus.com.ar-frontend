@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReactDOM from "react-dom/client";
+import Home from "./Home/Home";
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
-import Home from "./Home/Home";
 import Noxu$ from "./Noxu$/Components/Noxu$";
 import './Home/Css/Home.css';
 import './Auth/Css/Login.css';

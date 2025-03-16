@@ -1,4 +1,4 @@
-import noxusTexture from "/textures/noxus.png"
+import noxusTexture from "/static/textures/noxus.png"
 import * as THREE from "three";
 import React from "react";
 import { useLoader, useFrame } from "@react-three/fiber";
