@@ -1,6 +1,7 @@
 // src/components/Auth/Login.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaUser, FaLock } from 'react-icons/fa'
 import './Css/Login.css';
 
 const Login = (url) => {
@@ -21,7 +22,7 @@ const Login = (url) => {
   };
 
   const validationWithBackend = async (user, pass) => {
-    const url = "https://147.93.35.119/transactions";  // Sin puerto y sin "/"
+    const url = "https://api.noxus.com.ar/transactions";  // Sin puerto y sin "/"
     
     try {
       const response = await fetch(url);
@@ -37,33 +38,47 @@ const Login = (url) => {
   }
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
-      <h2>Iniciar Sesión</h2>
-      <div className="form-group">
-        <label>Username</label>
-        <input 
-          type="email" 
-          name="email" 
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label>Password </label>
-        <input 
-          type="password" 
-          name="password" 
-          value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-          required
-        />
-      </div>
-      <button type="submit" className="auth-btn">Enter</button>
-      <div className="auth-footer">
-        <a href="/register">¿No tienes cuenta? Regístrate</a>
-      </div>
-    </form>
+    <div className="wrapper">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        <div className="form-group">
+          <input 
+            type="email" 
+            name="email" 
+            value={formData.email}
+            placeholder='username'
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            required
+          />
+          <FaUser className='icon' />
+        </div>
+        <div className="form-group">
+          <input 
+            type="password" 
+            name="password" 
+            value={formData.password}
+            placeholder='password'
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            required
+          />
+          <FaLock className='icon' />
+        </div>
+
+        <div className="remember-forgot">
+          <label><input type="checkbox" />Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit">Login</button>
+        
+        <div className="register-link">
+          <p> 
+            Don't have an account? <a href="/register"> Register </a>
+          </p>
+        </div>
+      </form>
+    </div>
+    
   );
 };
 

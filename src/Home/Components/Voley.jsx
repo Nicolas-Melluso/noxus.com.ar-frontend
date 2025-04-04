@@ -1,4 +1,4 @@
-import tx from "/static/textures/1.jpg";
+import tx from "/static/textures/15.png";
 import React, { useState, useRef } from "react";
 import { useLoader, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
@@ -19,7 +19,7 @@ const Noxu$Planet = () => {
  
   const planetRef = useRef();
   
-  const rotationSpeed = 0.01;
+  const rotationSpeed = 0.03;
   const xRadio = 12;
   const zRadio = 6;
   const visibleSize = 1.5;
